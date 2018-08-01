@@ -1,5 +1,5 @@
 ﻿Imports Clases
-
+'responsable de bidireccionalidad
 Public MustInherit Class Propietario
     Implements iMultado
 
@@ -21,11 +21,19 @@ Public MustInherit Class Propietario
         _vehiculo = New List(Of Vehiculo)
     End Sub
 
-    Friend Sub addVehiculo(vehiculo As Vehiculo)
+    'En el diagrama add y remove vehiculo son friend, cambié a public por conveniencia
+
+    Public Sub addVehiculo(vehiculo As Vehiculo)
+        If vehiculo.Propietario IsNot Nothing Then
+            Dim otroVehiculo = vehiculo.Propietario
+            otroVehiculo.removeVehiculo(vehiculo)
+        End If
+        vehiculo.Propietario = Me
         _vehiculo.Add(vehiculo)
     End Sub
 
-    Friend Sub removeVehiculo(vehiculo As Vehiculo)
+    Public Sub removeVehiculo(vehiculo As Vehiculo)
+        vehiculo.Propietario = Nothing
         _vehiculo.Remove(vehiculo)
     End Sub
 

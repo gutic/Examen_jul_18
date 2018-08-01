@@ -11,18 +11,10 @@ Public Class Vehiculo
             Return _propietario
         End Get
         Friend Set(value As Propietario)
-            _propietario.addVehiculo(Me)
-            If Propietario._vehiculo IsNot Nothing Then
-                Dim otroVehiculo = Propietario._vehiculo
-                otroVehiculo.Remove()
-            End If
             _propietario = value
         End Set
     End Property
 
-    Public Sub removePropetario(propetario As Propietario)
-        propetario.removeVehiculo(Me)
-    End Sub
 
     Public Property Patente As String
         Get
@@ -37,6 +29,7 @@ Public Class Vehiculo
     Sub New(patente As String)
         _multas = New List(Of Multa)
         Me.Patente = patente
+
     End Sub
 
     Friend Sub addMulta(Multa As Multa)

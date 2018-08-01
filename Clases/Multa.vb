@@ -54,18 +54,14 @@
         End Set
     End Property
 
-    Sub New()
-        _Vehiculos = New List(Of Vehiculo)
-    End Sub
 
     Sub New(vehiculo As Vehiculo, fecha As Date, latitud As Decimal, longitud As Decimal, unidades As Decimal)
-        Me.New()
+        _Vehiculos = New List(Of Vehiculo)
         Me.addVehiculo(vehiculo)
         Me.Fecha = fecha
         Me.Latitud = latitud
         Me.Longitud = longitud
         Me.Unidades = unidades
-
     End Sub
 
     Public Sub addVehiculo(vehiculo As Vehiculo)
@@ -77,7 +73,7 @@
     End Function
 
     Public Overrides Function ToString() As String
-        Return _Vehiculos.ToString & Date.Now
+        Return vehic
     End Function
 
 End Class
